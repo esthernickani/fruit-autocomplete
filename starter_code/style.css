@@ -1,0 +1,59 @@
+* {
+  box-sizing: border-box; 
+  font-family: 'Lato', sans-serif;
+}
+
+:focus {
+ /* TODO */
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-image: linear-gradient(315deg, #ff4e00 0%, #ec9f05 74%);
+}
+
+input {
+ background-color: #FFAE42;
+ border: none;
+ height: 2.5rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.search-container {
+}
+.search-container input,
+.search-container .suggestions {
+  /* TODO */
+}
+.search-container input {
+ /* TODO */
+}
+.search-container .suggestions {
+   /* TODO */
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+ul.has-suggestions {
+  /* TODO */
+}
+ul li {
+  /* TODO */
+}
+ul li:hover {
+  background-color: #ff4e00;
+}
+
+input {
+   /* TODO */
+}
