@@ -10,41 +10,48 @@ function search(str) {
 	let results = [];
 
 	fruit.forEach(f => {
-		if (f.toLowerCase().includes(str.toString().toLowerCase()) && results.indexOf(f) === -1) {
+		if (f.includes(str.toString().toLowerCase()) && results.indexOf(f) === -1) {
 			results.push(f);
 		}
 	})
 
 	suggestions.innerHTML = '';
 
-	showSuggestions(results, str)
+	results = showSuggestions(results, str);
 
 	results.forEach(result => {
 		const li = document.createElement('li');
-		li.innerText = result;
+		li.innerHTML = result;
 		suggestions.append(li);
 	})
 }
 
 function searchHandler(e) {
-	
 	e.preventDefault(); 
-	const inputValue = input.value;
-	//console.log(inputValue)
-	search(inputValue);
-	
-
+	let inputValue = input.value;
+	search(inputValue)
 }
 
 function showSuggestions(results, inputVal) {
-	//console.log(typeof(`<strong>${inputVal}</strong>`))
+//console.log(typeof(`<strong>${inputVal}</strong>`))
+	let updatedRes = []
 	results.forEach(result => {
-		if (result.includes(inputVal)) {
-			result.replace(inputVal, "<strong>" + inputVal + "</strong")
+
+		let lowercasedResult = result.toLowerCase();
+		let lowercasedInputVal = inputVal.toLowerCase();
+		let index = lowercasedResult.indexOf(lowercasedInputVal);
+
+		if (index !== -1) {
+			let matchedPart = result.substring(index, index + inputVal.length);
+			let boldedResult = result.replace(matchedPart, `<strong>${matchedPart}</strong>`);
+			updatedRes.push(boldedResult);
+		} else {
+			updatedRes.push(result);
 		}
 	})
-	
-	// TODO
+	return updatedRes;
+
+// TODO
 }
 
 function useSuggestion(e) {
